@@ -2,6 +2,8 @@
 // Simple script to send a user query using the Vercel AI SDK
 import { createOpenRouter } from '@openrouter/ai-sdk-provider';
 import { generateText } from 'ai';
+import 'dotenv/config';
+
 
 async function main() {
   // Replace with your actual OpenRouter API key
@@ -24,7 +26,7 @@ async function main() {
 
   try {
     const { text } = await generateText({
-      model: openrouter.chat('deepseek/deepseek-chat-v3-0324:free'),
+      model: openrouter('deepseek/deepseek-chat-v3-0324:free'),
       prompt: userQuery,
     });
     console.log(text);
