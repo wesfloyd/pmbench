@@ -1,0 +1,38 @@
+lockfileVersion: '9.0'
+
+settings:
+  autoInstallPeers: true
+  excludeLinksFromLockfile: false
+
+importers:
+
+  .:
+    dependencies:
+      vercel-ai:
+        specifier: ^0.0.0
+        version: 0.0.0
+    devDependencies:
+      '@types/node':
+        specifier: ^24.0.14
+        version: 24.0.14
+
+packages:
+
+  '@types/node@24.0.14':
+    resolution: {integrity: sha512-4zXMWD91vBLGRtHK3YbIoFMia+1nqEz72coM42C5ETjnNCa/heoj7NT1G67iAfOqMmcfhuCZ4uNpyz8EjlAejw==}
+
+  undici-types@7.8.0:
+    resolution: {integrity: sha512-9UJ2xGDvQ43tYyVMpuHlsgApydB8ZKfVYTsLDhXkFL/6gfkp+U8xTGdh8pMJv1SpZna0zxG1DwsKZsreLbXBxw==}
+
+  vercel-ai@0.0.0:
+    resolution: {integrity: sha512-ajz9CyVRybwMlwZl2D8YP0qEurXK8sJSZsFyqfbcZ1Of2hlbvm6dCZ1m+FV8eaBgbQDnMY3IWEP5AMEXhV7SQA==}
+
+snapshots:
+
+  '@types/node@24.0.14':
+    dependencies:
+      undici-types: 7.8.0
+
+  undici-types@7.8.0: {}
+
+  vercel-ai@0.0.0: {}
