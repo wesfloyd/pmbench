@@ -1,30 +1,35 @@
 // pmbench.ts
 // Simple script to send a user query using the Vercel AI SDK
-import { createClient } from 'vercel-ai';
+import { createOpenRouter } from '@openrouter/ai-sdk-provider';
+import { generateText } from 'ai';
 
 async function main() {
-  // Replace with your actual Vercel AI API key
-  const apiKey = process.env.VERCEL_AI_API_KEY;
+  // Replace with your actual OpenRouter API key
+  const apiKey = process.env.OPENROUTER_API_KEY;
   if (!apiKey) {
-    console.error('Please set the VERCEL_AI_API_KEY environment variable.');
+    console.error('Please set the OPENROUTER_API_KEY environment variable.');
     process.exit(1);
   }
 
-  const client = createClient({ apiKey });
+  const openrouter = createOpenRouter({
+    apiKey,
+  });
 
   // Example user query
-  const userQuery = process.argv.slice(2).join(' ') || 'Hello, AI!';
+  const userQuery = process.argv.slice(2).join(' ');
+  if (!userQuery) {
+    console.error('Error: Please provide a query as a command-line argument.');
+    process.exit(1);
+  }
 
   try {
-    const response = await client.chat.completions.create({
-      messages: [
-        { role: 'user', content: userQuery },
-      ],
-      model: 'gpt-3.5-turbo', // or another available model
+    const { text } = await generateText({
+      model: openrouter.chat('deepseek/deepseek-chat-v3-0324:free'),
+      prompt: userQuery,
     });
-    console.log('AI Response:', response.choices[0].message.content);
+    console.log(text);
   } catch (error) {
-    console.error('Error communicating with Vercel AI:', error);
+    console.error('Error communicating with OpenRouter AI:', error);
   }
 }
 
