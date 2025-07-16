@@ -1,5 +1,5 @@
 # pmbench
-An AI benchmark that uses 
+An AI benchmark that uses prediction markets to measure effectiveness of AI models.
 
 
 
